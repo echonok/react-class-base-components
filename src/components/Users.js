@@ -5,10 +5,16 @@ import classes from './Users.module.css';
 
 class Users extends Component {
 
-  constructor() {
-    super();
+  constructor(props, context) {
+    super(props, context);
     this.state = {
       showUsers: true
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    if (this.props.users.length === 0) {
+      throw new Error('No users');
     }
   }
 
